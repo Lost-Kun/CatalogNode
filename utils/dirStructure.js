@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');
+const config = require('../config/config');
 
 const staticFn = (req, res) => {
     let url = decodeURI(req.url);
-    let fpath = path.join(__dirname + '/..'+url);
+    // let fpath = path.join(__dirname + '/..'+url);
+    let fpath = path.join(config.dirPath, url.replace(/^\/static(\/?)/g,''));
     fs.access(fpath, (err) => {
         if(err){
             res.writeHead(200,{'Content-Type':'text/html;charset=utf-8'});
