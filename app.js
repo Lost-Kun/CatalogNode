@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     }
 });
 
-const io = socketIo(server);
+// const io = socketIo(server);
 
 server.listen(8082);
 console.log("server start in http://localhost:8082");
